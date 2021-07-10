@@ -1,0 +1,60 @@
+.blocks-banner-color (@color) {
+  border-color: @color;
+}
+
+.blocks-banner--info {
+  .blocks-banner       { @apply border-blue-500; }
+  .blocks-banner__icon { @apply text-blue-500;   }
+}
+
+.blocks-banner--warning {
+  .blocks-banner       { @apply border-yellow-500; }
+  .blocks-banner__icon { @apply text-yellow-500;   }
+}
+
+.blocks-banner--error {
+  .blocks-banner       { @apply border-red-500; }
+  .blocks-banner__icon { @apply text-red-500;   }
+}
+
+.blocks-banner--success {
+  .blocks-banner       { @apply border-green-500; }
+  .blocks-banner__icon { @apply text-green-500;   }
+}
+
+.blocks-banner {
+  @apply flex;
+  @apply flex-row;
+
+  @apply bg-gray-100;
+  @apply px-2;
+  @apply py-3;
+  @apply rounded;
+
+  margin-top:    1.25rem;
+  margin-bottom: 1.25rem;
+
+  border-width: 0 0 0 4px;
+
+  @apply border-solid;
+
+  &__icon {
+    @apply flex-shrink;
+    @apply mr-3;
+
+    padding-top: 0.125rem;
+
+    .dashicons {
+      font-size: 24px !important;
+    }
+  }
+
+  &__text {
+    @apply flex-grow;
+    @apply text-sm;
+    @apply text-gray-700;
+
+    a       { @apply text-blue-500; }
+    a:hover { @apply underline; };
+  }
+}
