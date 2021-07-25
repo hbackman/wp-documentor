@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') || exit; ?>
 <?php
 
 if (! function_exists('dd')) {
@@ -24,4 +25,13 @@ if (! function_exists('wpdocs_theme_path')) {
   {
     return get_stylesheet_directory_uri() . DIRECTORY_SEPARATOR . $path;
   }
+}
+
+// --------------------------------
+// Theme Functions
+// --------------------------------
+
+function wpdocumentor_theme_copyright()
+{
+  echo get_theme_mod('wpdocumentor_theme_copyright');
 }

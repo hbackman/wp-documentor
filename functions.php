@@ -8,6 +8,9 @@ define('WP_DOCUMENTOR_THEME_FILE', __FILE__);
 define('WP_DOCUMENTOR_THEME_VERSION', '1.0');
 
 require_once __DIR__ . '/includes/wpdocumentor-functions.php';
+require_once __DIR__ . '/includes/wpdocumentor-menus.php';
+require_once __DIR__ . '/includes/wpdocumentor-custom-logo.php';
+require_once __DIR__ . '/includes/wpdocumentor-options.php';
 
 // If we're running wordpress in a development environment,
 // then enable all php error reporting.
@@ -18,7 +21,7 @@ if (($_ENV['WORDPRESS_ENVIRONMENT'] ?? null) == 'development') {
 }
 
 add_action('wp_enqueue_scripts', function () {
-  wp_enqueue_script('app', get_template_directory() . '/build/app.js');
+  wp_enqueue_script('app', wpdocs_theme_path('build/app.js'));
 });
 
 add_action('enqueue_block_editor_assets', function () {
@@ -60,9 +63,3 @@ add_filter('the_content', function ($content) {
   };
   return preg_replace_callback($ex, $fn, $content);
 });
-
-register_nav_menus([
-  'header'     => __('Header Menu'),
-  'footer'     => __('Footer Menu'),
-  'navigation' => __('Navigation'),
-]);

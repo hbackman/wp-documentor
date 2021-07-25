@@ -4,43 +4,98 @@
 
 @import "./blocks-banner";
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 // ==============================
 // Layout
 // ==============================
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
 }
 
 header {
-  position: relative;
-  width: 100%;
+  position: -webkit-sticky;
+  position: sticky;
   z-index: 100;
 }
 
-aside {
-  top: 4rem;
+nav {
+  z-index: 105;
+  top: 0;
 }
 
+// On desktop, push the content enough to
+// fit the sidebar.
+main {
+  margin-left: 18rem;
+}
+
+#wpdocumentor-navigation-overlay {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.6);
+
+  z-index: 101;
+
+  display: none;
+  opacity: 0;
+
+  transition-property: opacity;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+
+  &.is-active {
+    display: block;
+    opacity: 1;
+  }
+}
+
+#wpdocumentor-navigation-toggle {
+  display: none;
+}
+
+.admin-bar nav    { top: 46px; }
 .admin-bar header { top: 46px; }
-.admin-bar aside  { top: calc(4rem + 46px); }
 
 @media screen and (min-width: 783px) {
+  .admin-bar nav    { top: 32px; }
   .admin-bar header { top: 32px; }
-  .admin-bar aside  { top: calc(4rem + 32px); }
+}
+
+@media screen and (max-width: 783px) {
+  nav {
+    left: -18rem !important;
+
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.2s;
+    transition-property: left;
+  }
+
+  #wpdocumentor-navigation-toggle {
+    display: block;
+  }
+
+  nav.is-active {
+    left: 0 !important;
+  }
+
+  main {
+    margin-left: 0 !important;
+  }
 }
 
 // ==============================
 // Typography
 // ==============================
 
-
 h1 {
   font-size: 29px;
   font-weight: 500;
 
   line-height: 1.2;
-  margin: .67em 0;
+  padding: .67em 0;
 }
 
 h2 {
@@ -48,7 +103,7 @@ h2 {
   font-weight: 500;
 
   line-height: 32px;
-  margin-bottom: 16px;
+  padding-bottom: 16px;
 }
 
 h3 {
@@ -56,7 +111,7 @@ h3 {
   font-weight: 500;
 
   line-height: 24px;
-  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 h4 {
@@ -65,7 +120,7 @@ h4 {
 
   line-height: 24px;
   letter-spacing: 1px;
-  margin-bottom: 4px;
+  padding-bottom: 4px;
 }
 
 h5 {
@@ -74,7 +129,68 @@ h5 {
   font-size: 14px;
   line-height: 24px;
 
-  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+// ==============================
+// Navigation
+// ==============================
+
+.navigation {
+  .menu-item {
+    @apply py-2;
+    @apply px-6;
+
+    @apply font-medium;
+    @apply text-sm;
+
+    a {
+      @apply text-gray-800;
+
+      &:hover {
+        @apply text-gray-400;
+      }
+    }
+  }
+
+  .sub-menu {
+    @apply py-2;
+  }
+
+  .sub-menu .menu-item {
+    @apply font-normal;
+
+    @apply pl-3;
+    @apply pr-6;
+
+    padding-top:    0.3rem;
+    padding-bottom: 0.3rem;
+  }
+
+  .current-menu-item > a,
+  .current-menu-item > a:hover {
+    @apply text-blue-500;
+  }
+}
+
+.navigation_footer {
+  // flex flex-row justify-center
+  // px-2 text-sm text-gray-600
+
+  @apply flex;
+  @apply flex-row;
+
+  @apply justify-center;
+
+  .menu-item {
+    @apply px-2;
+    @apply text-sm;
+    @apply text-gray-600;
+  }
+
+  .menu-item:hover {
+    @apply underline;
+  }
 }
 
 // ==============================
