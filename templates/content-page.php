@@ -1,5 +1,4 @@
 <?php defined('ABSPATH') || exit; ?>
-
 <div>
     <h1><?php the_title(); ?></h1>
 </div>
