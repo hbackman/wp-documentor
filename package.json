@@ -19,5 +19,8 @@
     "less": "^4.1.1",
     "less-loader": "^10.0.1",
     "tailwindcss": "^2.2.4"
+  },
+  "dependencies": {
+    "build": "^0.1.4"
   }
 }
